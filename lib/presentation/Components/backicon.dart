@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'package:wasel_app/presentation/screens/introscreen.dart';
 
@@ -15,7 +14,7 @@ class BackIcon extends StatelessWidget {
       left: 16,
       child: TextButton(
         onPressed: () {
-          Get.to(const IntroScreen()); // Navigates back to IntroScreen
+          Navigator.of(context).pushNamed('intro_screen');
         },
         child: Container(
           height: 40,

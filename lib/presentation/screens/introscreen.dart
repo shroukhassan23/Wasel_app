@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:wasel_app/presentation/Components/my_button.dart';
 import 'package:wasel_app/presentation/Components/whitebox.dart';
 import 'package:wasel_app/presentation/screens/login_screen.dart';
@@ -81,7 +81,7 @@ class IntroScreen extends StatelessWidget {
                         child: Center(
                           child: MyButton(
                             onPressed: () {
-                              Get.to(() => SignupScreen());
+                              Navigator.of(context).pushNamed('signup_screen');
                             },
                             width: MediaQuery.of(context).size.width * 0.7,
                             text: "Sign up",
@@ -95,7 +95,7 @@ class IntroScreen extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.7,
                           text: "Log in",
                           onPressed: () {
-                            Get.to(() => LoginScreen());
+                            Navigator.of(context).pushNamed('login_screen');
                           },
                           color: const Color(0xffddeffe),
                           txtColor: Colors.black,

@@ -1,4 +1,4 @@
-package com.example.wasel_app
+package com.example.waselapp
 
 import io.flutter.embedding.android.FlutterActivity
 

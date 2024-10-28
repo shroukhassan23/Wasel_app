@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:wasel_app/Auth/user_services.dart';
+import 'package:wasel_app/businessLogic/cubit/auth_cubit.dart';
 import 'package:wasel_app/presentation/screens/introscreen.dart';
 
 class SecondSplash extends StatefulWidget {
@@ -13,34 +16,42 @@ class SecondSplash extends StatefulWidget {
 class _SecondSplashState extends State<SecondSplash> {
   @override
   void initState() {
-    Timer(
-        Duration(seconds: 4),
-        () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const IntroScreen()),
-            ));
+    Timer(Duration(seconds: 4), () {
+      final authCubit = context.read<AuthCubit>();
+      authCubit.checkAuthStatus();
+    });
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Color(0xff56a3e7),
-          Color.fromARGB(255, 163, 205, 242),
-        ], begin: Alignment.topCenter)),
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.2,
-            bottom: MediaQuery.of(context).size.height * 0.1,
-          ),
-          child: Center(
-            child: Image.asset("lib/presentation/assets/images/logo2.png"),
+    return BlocListener<AuthCubit, AuthState>(
+      listener: (context, state) {
+        if (state is Authenticated) {
+          //! change intro with home
+          Navigator.of(context).pushNamed('intro_screen');
+        } else {
+          Navigator.of(context).pushNamed('intro_screen');
+        }
+      },
+      child: Scaffold(
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [
+            Color(0xff56a3e7),
+            Color.fromARGB(255, 163, 205, 242),
+          ], begin: Alignment.topCenter)),
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.width * 0.2,
+              bottom: MediaQuery.of(context).size.height * 0.1,
+            ),
+            child: Center(
+              child: Image.asset("lib/presentation/assets/images/logo2.png"),
+            ),
           ),
         ),
       ),

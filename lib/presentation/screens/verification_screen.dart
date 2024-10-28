@@ -1,11 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
+
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:wasel_app/presentation/Components/backicon.dart';
 import 'package:wasel_app/presentation/Components/my_button.dart';
+import 'package:wasel_app/presentation/Components/timer.dart';
 import 'package:wasel_app/presentation/Components/whitebox.dart';
 import 'package:wasel_app/presentation/constants.dart';
+import 'package:wasel_app/presentation/screens/forgot_password_screen.dart';
+import 'package:wasel_app/presentation/screens/new_password_screen.dart';
 
 class VerificationScreen extends StatefulWidget {
   VerificationScreen({
@@ -165,8 +169,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
                             ),
                           ),
                           _buildPinCodeFields(context),
-                          Text("Didn't receive code?"),
-                          Text("00:52"),
+                          Text(
+                            "Didn't receive code?",
+                            style: TextStyle(fontSize: 18),
+                          ),
+                          CountdownTimer(),
                           Padding(
                             padding: EdgeInsets.only(
                               top: MediaQuery.of(context).size.height * 0.05,
@@ -176,7 +183,10 @@ class _VerificationScreenState extends State<VerificationScreen> {
                                 text: "Verify",
                                 width: MediaQuery.of(context).size.width * 0.85,
                                 txtColor: Colors.white,
-                                onPressed: () {}),
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushNamed('create_password_screen');
+                                }),
                           ),
                         ],
                       ),

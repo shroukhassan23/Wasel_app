@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:wasel_app/presentation/Components/backicon.dart';
 import 'package:wasel_app/presentation/Components/my_button.dart';
 import 'package:wasel_app/presentation/Components/my_txtfield.dart';
 import 'package:wasel_app/presentation/Components/whitebox.dart';
+import 'package:wasel_app/presentation/constants.dart';
 import 'package:wasel_app/presentation/screens/signup_screen.dart';
 
 class CreatePassScreen extends StatelessWidget {
@@ -41,7 +42,7 @@ class CreatePassScreen extends StatelessWidget {
                   ),
                   child: Text(
                     "back",
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
@@ -69,36 +70,48 @@ class CreatePassScreen extends StatelessWidget {
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * 0.72,
                     child: SingleChildScrollView(
+                      // Wrap Column with SingleChildScrollView
                       child: Column(
                         children: [
-                          const Padding(
-                            padding: EdgeInsets.only(top: 10),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.05,
+                            ),
                             child: Text(
-                              "Welcome back",
+                              "Create New Password",
                               style: TextStyle(
                                 fontSize: 32,
-                                color: Color(0xff2c6aa2),
+                                color: blue,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(
-                              right: MediaQuery.of(context).size.width * 0.75,
+                              padding: EdgeInsets.only(
+                                right:
+                                    MediaQuery.of(context).size.height * 0.02,
+                                left: MediaQuery.of(context).size.height * 0.02,
+                              ),
+                              child: Text(
+                                "Please enter and confirm your new password ",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color(0xffcac9cb),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
+                          Text(
+                            "You will need to login after you reset",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Color(0xffcac9cb),
+                              fontWeight: FontWeight.bold,
                             ),
-                            child: const Text(
-                              "Email",
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          MyTxtfield(
-                            icon: Icons.email_outlined,
-                            hintText: "example@gmail.com",
                           ),
                           Padding(
                             padding: EdgeInsets.only(
-                              right: MediaQuery.of(context).size.width * 0.65,
+                              top: MediaQuery.of(context).size.height * 0.05,
+                              right: MediaQuery.of(context).size.width * 0.75,
                             ),
                             child: const Text(
                               "Password",
@@ -107,50 +120,38 @@ class CreatePassScreen extends StatelessWidget {
                             ),
                           ),
                           MyTxtfield(
-                            icon: Icons.remove_red_eye,
-                            hintText: "Password",
+                            icon: Icons.email_outlined,
+                            hintText: "Enter your password",
                           ),
-                          MyButton(
-                              color: const Color(0xff1778f2),
-                              text: "Log in",
-                              txtColor: Colors.white,
-                              onPressed: () {}),
-                          OrDivider(),
-                          MyButton(
-                              color: const Color(0xff1778f2),
-                              text: "Log in with Facebook",
-                              txtColor: Colors.white,
-                              icon:
-                                  "lib/presentation/assets/icons/facebook1.png",
-                              onPressed: () {}),
-                          MyButton(
-                              color: Color.fromARGB(255, 225, 224, 226),
-                              text: "Log in with Google",
-                              txtColor: const Color.fromARGB(255, 0, 0, 0),
-                              icon: "lib/presentation/assets/icons/google.png",
-                              onPressed: () {}),
                           Padding(
-                              padding: EdgeInsets.only(
-                                bottom: 25,
-                              ),
-                              child: RichText(
-                                text: TextSpan(children: [
-                                  TextSpan(
-                                    text: "Don't have an account? ",
-                                    style: TextStyle(
-                                        fontSize: 16, color: Colors.black),
-                                  ),
-                                  TextSpan(
-                                      text: "Sign Up",
-                                      style: TextStyle(
-                                          color: Color(0xff1778f2),
-                                          fontSize: 14),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          Get.to(SignupScreen());
-                                        })
-                                ]),
-                              ))
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.02,
+                              right: MediaQuery.of(context).size.width * 0.6,
+                            ),
+                            child: const Text(
+                              "Confirm Password",
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          MyTxtfield(
+                            icon: Icons.email_outlined,
+                            hintText: "Enter your password",
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height * 0.02,
+                            ),
+                            child: MyButton(
+                                color: const Color(0xff1778f2),
+                                text: "Reset Password",
+                                width: MediaQuery.of(context).size.width * 0.85,
+                                txtColor: Colors.white,
+                                onPressed: () {
+                                  Navigator.of(context)
+                                      .pushNamed('create_password_screen');
+                                }),
+                          ),
                         ],
                       ),
                     ),
@@ -161,46 +162,6 @@ class CreatePassScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class OrDivider extends StatelessWidget {
-  const OrDivider({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        // Left Divider Line
-        Expanded(
-          child: Divider(
-            thickness: 1.5, // Thickness of the line
-            color: Colors.grey, // Color of the line
-          ),
-        ),
-        // "Or With" Text
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            "Or With",
-            style: TextStyle(
-              color: const Color.fromARGB(255, 37, 35, 35),
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        // Right Divider Line
-        Expanded(
-          child: Divider(
-            thickness: 1.5,
-            color: Colors.grey,
-          ),
-        ),
-      ],
     );
   }
 }

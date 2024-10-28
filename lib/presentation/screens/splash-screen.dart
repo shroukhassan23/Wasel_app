@@ -25,23 +25,114 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Color(0xff56a3e7),
-          Color.fromARGB(255, 163, 205, 242),
-        ], begin: Alignment.topCenter)),
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: MediaQuery.of(context).size.width * 0.2,
-          ),
-          child: Center(
-            child: Image.asset("lib/presentation/assets/images/logo1.png"),
+      body: Stack(children: [
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFFF4E4F7), // Light background base
+                Color(0xFFE8DEF8),
+                Color(0xFFEBDEF3),
+              ],
+            ),
           ),
         ),
-      ),
+        Positioned(
+          top: -150,
+          right: -100,
+          child: Container(
+            width: 350,
+            height: 350,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  Colors.purple.withOpacity(0.2),
+                  Colors.transparent,
+                ],
+                stops: [0.3, 1.0],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          top: 100,
+          left: -100,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: 500,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  const Color.fromARGB(217, 191, 125, 201).withOpacity(0.4),
+                  Colors.transparent,
+                ],
+                stops: [0.1, 1],
+              ),
+            ),
+          ),
+        ),
+        /*
+        Positioned(
+          top: 250,
+          left: -100,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: 300,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  const Color.fromARGB(217, 191, 125, 201).withOpacity(0.5),
+                  Colors.transparent,
+                ],
+                stops: [0.1, 1],
+              ),
+            ),
+          ),
+        ),*/
+        Positioned(
+          top: -100,
+          right: -100,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.8,
+            height: 300,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  const Color.fromARGB(217, 191, 125, 201).withOpacity(0.1),
+                  Colors.transparent,
+                ],
+                stops: [0.1, 1.0],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: -100,
+          right: -100,
+          child: Container(
+            width: 300,
+            height: 300,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  Colors.purple.withOpacity(0.4),
+                  Colors.transparent,
+                ],
+                stops: [0.1, 1.0],
+              ),
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }

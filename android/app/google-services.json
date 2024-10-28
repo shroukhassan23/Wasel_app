@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "463417894806",
+    "project_id": "wasel-app-1a87a",
+    "storage_bucket": "wasel-app-1a87a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463417894806:android:6271b6a2994bd2854f9fb7",
+        "android_client_info": {
+          "package_name": "com.example.waselapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463417894806-28fq5gvibgo05kpnr7hr126hf3b6mqeq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.waselapp",
+            "certificate_hash": "0ab5d5a84af181411dab17bd58bea7121c4c181b"
+          }
+        },
+        {
+          "client_id": "463417894806-63vh1cbrl1986a947mba681fchgs0gk9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhwXi7pQe_gSOa0diJnUlrlNICuHdsqcM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463417894806-63vh1cbrl1986a947mba681fchgs0gk9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "463417894806-ihenosmas3r9a7rnequfh1l3q0ft0461.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.waselApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
