@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:wasel_app/themeing/mycolors.dart';
 
 class MyTxtfield extends StatelessWidget {
   final TextEditingController? controller;
@@ -32,7 +33,7 @@ class MyTxtfield extends StatelessWidget {
             hintText: hintText,
             filled: true,
             hintStyle: TextStyle(color: Color(0xffa8a7a7)),
-            fillColor: color,
+            fillColor: MyColors.lightpurple,
             suffixIcon: IconButton(
               icon: Icon(icon),
               onPressed: onpress,

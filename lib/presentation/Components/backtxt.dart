@@ -8,7 +8,7 @@ class Backtxt extends StatelessWidget {
     return Text(
       "Back",
       style: const TextStyle(
-          color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+          color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),
     );
   }
 }

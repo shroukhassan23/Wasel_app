@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -12,15 +13,31 @@ class AuthCubit extends Cubit<AuthState> {
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  User? getCurrentUser() {
+    return _auth.currentUser;
+  }
+
   // Register new user
-  Future<void> signUp(String email, String password) async {
+  Future<void> signUp(String email, String password, String fullName) async {
     try {
       emit(AuthLoading());
+      //create a new user
       UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
+      User? user = userCredential.user;
+      if (user != null) {
+        // حفظ بيانات المستخدم في Firestore
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+          'uid': user.uid,
+          'email': email,
+          'fullName': fullName,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+      }
+      //return user credential
       emit(Authenticated(user: userCredential.user));
     } on FirebaseAuthException catch (e) {
       emit(AuthError(e.message ?? 'Unknown error occurred'));
@@ -37,6 +54,7 @@ class AuthCubit extends Cubit<AuthState> {
         email: email,
         password: password,
       );
+
       emit(Authenticated(user: userCredential.user));
     } on FirebaseAuthException catch (e) {
       emit(AuthError(e.message ?? 'Unknown error occurred'));

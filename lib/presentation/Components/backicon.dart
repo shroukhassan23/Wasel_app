@@ -18,10 +18,9 @@ class BackIcon extends StatelessWidget {
         height: 40,
         width: 40,
         decoration: BoxDecoration(
-          border: Border.all(color: MyColors.purble),
-          borderRadius: BorderRadius.circular(30),
-          color: Color(0xfff1f5f9),
-        ),
+            border: Border.all(color: MyColors.purble),
+            borderRadius: BorderRadius.circular(30),
+            color: MyColors.white),
         child: const Icon(
           Icons.arrow_back,
           color: MyColors.purble,

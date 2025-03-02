@@ -17,7 +17,7 @@ class SecondSplash extends StatefulWidget {
 class _SecondSplashState extends State<SecondSplash> {
   @override
   void initState() {
-    Timer(Duration(seconds: 4), () {
+    Timer(Duration(seconds: 1), () {
       final authCubit = context.read<AuthCubit>();
       authCubit.checkAuthStatus();
     });

@@ -11,6 +11,8 @@ class MyButton extends StatelessWidget {
   final double? width;
   final double? height;
   final void Function()? onPressed;
+  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry txtpadding;
 
   MyButton({
     Key? key,
@@ -21,6 +23,8 @@ class MyButton extends StatelessWidget {
     this.width,
     this.height,
     required this.onPressed,
+    this.padding = const EdgeInsets.all(0),
+    this.txtpadding = const EdgeInsets.all(0),
   }) : super(key: key);
 
   @override
@@ -41,7 +45,7 @@ class MyButton extends StatelessWidget {
                   text,
                   style: TextStyle(
                     color: txtColor,
-                    fontSize: 20,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -50,21 +54,27 @@ class MyButton extends StatelessWidget {
                 mainAxisAlignment:
                     MainAxisAlignment.center, // Center the row contents
                 children: [
-                  ClipOval(
-                    child: Image.asset(
-                      icon!,
-                      height: 24, // Set a fixed height for the icon
-                      width: 24, // Set a fixed width for the icon
-                      fit: BoxFit.cover, // Ensure the image covers the circle
+                  Padding(
+                    padding: padding,
+                    child: ClipOval(
+                      child: Image.asset(
+                        icon!,
+                        height: 24, // Set a fixed height for the icon
+                        width: 24, // Set a fixed width for the icon
+                        fit: BoxFit.cover, // Ensure the image covers the circle
+                      ),
                     ),
                   ),
                   SizedBox(width: 10), // Space between icon and text
-                  Text(
-                    text,
-                    style: TextStyle(
-                      color: txtColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: txtpadding,
+                    child: Text(
+                      text,
+                      style: TextStyle(
+                        color: txtColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

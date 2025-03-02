@@ -4,9 +4,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:wasel_app/businessLogic/cubit/auth_cubit.dart';
 import 'package:wasel_app/presentation/Components/backicon.dart';
 import 'package:wasel_app/presentation/Components/backtxt.dart';
+import 'package:wasel_app/presentation/Components/bottom_bar.dart';
 import 'package:wasel_app/presentation/Components/my_circular_button.dart';
 import 'package:wasel_app/presentation/screens/sign_translator_screen.dart';
 import 'package:wasel_app/themeing/mycolors.dart';
+
+import '../Components/drop_menu.dart';
 
 class StartRecognitionScreen extends StatelessWidget {
   const StartRecognitionScreen({super.key});
@@ -20,9 +23,36 @@ class StartRecognitionScreen extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fill,
                       image: AssetImage(
                           "lib/presentation/assets/images/boy.png"))),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: MediaQuery.of(context).size.height * 0.04,
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 60,
+                  ),
+                  /*  signTranslatortxt(),
+                SizedBox(
+                  width: 10,
+                ),*/
+                  Padding(
+                    padding: const EdgeInsets.only(left: 155),
+                    child: Container(
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: MyColors.lightpurple,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: DropDownmenuLanguage(),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -42,9 +72,9 @@ class StartRecognitionScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   MyCircularButton(
-                    width: 170,
-                    height: 80,
-                    icon: Icons.camera_alt_outlined,
+                    width: 150,
+                    height: 70,
+                    icon: Icons.videocam_rounded,
                     buttonColor: MyColors.white,
                     iconColor: MyColors.purble,
                     onPressed: () {
@@ -53,42 +83,17 @@ class StartRecognitionScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(
-                    "Start",
+                    "Start Sign Translator",
                     style: TextStyle(
                         color: MyColors.white,
-                        fontSize: 26,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     height: 32,
                   ),
                   Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      color: MyColors.white,
-                      child: BottomNavigationBar(items: [
-                        BottomNavigationBarItem(
-                            icon: Image.asset(
-                                width: 40,
-                                "lib/presentation/assets/icons/home.png"),
-                            label: ""),
-                        BottomNavigationBarItem(
-                            icon: SvgPicture.asset(
-                              "lib/presentation/assets/icons/sign.svg",
-                              width: 35,
-                            ),
-                            label: ""),
-                        BottomNavigationBarItem(
-                            icon: Image.asset(
-                                "lib/presentation/assets/icons/Group.png"),
-                            label: ""),
-                        BottomNavigationBarItem(
-                            icon: Image.asset(
-                                "lib/presentation/assets/icons/settings.png"),
-                            label: ""),
-                      ]),
-                    ),
-                  )
+                      alignment: Alignment.bottomCenter, child: BottomNavBar())
                 ],
               ),
             )

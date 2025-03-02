@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wasel_app/presentation/Components/my_button.dart';
 import 'package:wasel_app/presentation/Components/whitebox.dart';
-import 'package:wasel_app/presentation/screens/login_screen.dart';
-import 'package:wasel_app/presentation/screens/signup_screen.dart';
+import 'package:wasel_app/presentation/screens/authScreens/login_screen.dart';
+import 'package:wasel_app/presentation/screens/authScreens/signup_screen.dart';
 import 'package:wasel_app/themeing/mycolors.dart';
 
 class IntroScreen extends StatelessWidget {

@@ -6,7 +6,7 @@ import 'package:wasel_app/presentation/Components/my_button.dart';
 import 'package:wasel_app/presentation/Components/my_txtfield.dart';
 import 'package:wasel_app/presentation/Components/whitebox.dart';
 import 'package:wasel_app/presentation/constants.dart';
-import 'package:wasel_app/presentation/screens/signup_screen.dart';
+import 'package:wasel_app/presentation/screens/authScreens/signup_screen.dart';
 
 class CreatePassScreen extends StatelessWidget {
   const CreatePassScreen({super.key});

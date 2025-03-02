@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(
-        const Duration(seconds: 4), //Duration of the splash screen
+        const Duration(seconds: 2), //Duration of the splash screen
         () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const SecondSplash()),
@@ -94,10 +94,18 @@ class _SplashScreenState extends State<SplashScreen> {
                 stops: [0.1, 1.0],
               ),
             ),
+          ),
+        ),
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: MediaQuery.of(context).size.width * 0.05,
+              bottom: MediaQuery.of(context).size.height * 0.3,
+            ),
             child: Center(
-              child: SizedBox(
-                child: Image.asset("lib/presentation/assets/images/logo1.png"),
-              ),
+              child: Image.asset("lib/presentation/assets/images/logo1.png"),
             ),
           ),
         ),
